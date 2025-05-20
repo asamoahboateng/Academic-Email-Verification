@@ -27,3 +27,5 @@
 192.168.0.119 - - [20/May/2025:17:29:55 +0000] "GET /demo.php HTTP/1.1" 200 3137 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" 0.024 WseeoeA
 192.168.0.119 - - [20/May/2025:17:29:59 +0000] "POST /demo.php HTTP/1.1" 200 3516 "http://192.168.0.119:8280/demo.php" "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" 0.031 WseeoeA
 192.168.0.119 - - [20/May/2025:17:30:00 +0000] "POST /demo.php HTTP/1.1" 200 3137 "http://192.168.0.119:8280/demo.php" "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" 0.020 WseeoeA
+192.168.0.119 - - [20/May/2025:18:19:17 +0000] "GET / HTTP/1.1" 200 426 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" 0.000 WseeoeA
+192.168.0.119 - - [20/May/2025:18:19:24 +0000] "GET / HTTP/1.1" 200 426 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0" 0.001 WseeoeA

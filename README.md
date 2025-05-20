@@ -1,5 +1,7 @@
 # Academic Email Verifier
 
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://packagist.org/packages/asamoahboateng/academic-email-verifier)
+
 A PHP package to verify if an email address belongs to an academic or research institution. This package helps you validate whether an email address is from a recognized academic institution.
 
 ## Live Demo
@@ -11,7 +13,7 @@ Try the package live at: [verify-academic-email.asamoahboateng.com](https://veri
 You can install the package via Composer:
 
 ```bash
-composer require asamoahboateng/academic-email-verifier
+composer require asamoahboateng/academic-email-verifier:^1.0
 ```
 
 ## Requirements

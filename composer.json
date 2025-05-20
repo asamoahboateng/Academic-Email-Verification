@@ -3,6 +3,7 @@
     "description": "A PHP package to verify if an email address belongs to an academic or research institution. Live demo: https://verify-academic-email.asamoahboateng.com",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Kwame Boateng",
