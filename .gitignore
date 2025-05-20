@@ -1,3 +1,9 @@
 ./docker
 ./docker/*
 ./docker-compose.yml
+./vendor
+./tests/data
+./tests/cache
+./tests/logs
+./tests/reports
+./tests/tmp
