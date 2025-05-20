@@ -5,6 +5,7 @@ namespace AcademicEmailVerifier;
 class AcademicEmailVerifier
 {
     private array $domains = [];
+    private array $domainExceptions = [];
     private string $dataDirectory;
 
     public function __construct(string $dataDirectory = null)
@@ -36,6 +37,54 @@ class AcademicEmailVerifier
             // Merge the domains from this file with existing domains
             $this->domains = array_merge($this->domains, $data);
         }
+    }
+
+    /**
+     * Add a domain exception to be considered as academic
+     * 
+     * @param string $domain The domain to add (e.g., 'example.edu')
+     * @param string $institutionName The name of the institution
+     * @return void
+     */
+    public function addDomainException(string $domain, string $institutionName): void
+    {
+        $domain = strtolower($domain);
+        $this->domainExceptions[$domain] = [
+            'name' => $institutionName,
+            'domains' => [$domain]
+        ];
+    }
+
+    /**
+     * Remove a domain exception
+     * 
+     * @param string $domain The domain to remove
+     * @return void
+     */
+    public function removeDomainException(string $domain): void
+    {
+        $domain = strtolower($domain);
+        unset($this->domainExceptions[$domain]);
+    }
+
+    /**
+     * Get all domain exceptions
+     * 
+     * @return array List of domain exceptions
+     */
+    public function getDomainExceptions(): array
+    {
+        return $this->domainExceptions;
+    }
+
+    /**
+     * Clear all domain exceptions
+     * 
+     * @return void
+     */
+    public function clearDomainExceptions(): void
+    {
+        $this->domainExceptions = [];
     }
 
     /**
@@ -77,6 +126,16 @@ class AcademicEmailVerifier
 
         $domain = strtolower(explode('@', $email)[1]);
 
+        // First check domain exceptions
+        if (isset($this->domainExceptions[$domain])) {
+            return [
+                'is_academic' => true,
+                'university' => $this->domainExceptions[$domain]['name'],
+                'error' => null
+            ];
+        }
+
+        // Then check the main database
         foreach ($this->domains as $university) {
             if (in_array($domain, $university['domains'])) {
                 return [

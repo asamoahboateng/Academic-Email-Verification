@@ -39,6 +39,42 @@ if ($result['is_academic']) {
 }
 ```
 
+### Domain Exceptions
+
+You can add custom domain exceptions for institutions that aren't in the main database:
+
+```php
+use AcademicEmailVerifier\AcademicEmailVerifier;
+
+$verifier = new AcademicEmailVerifier();
+
+// Add multiple domain exceptions
+$verifier->addDomainException('custom.edu', 'Custom University');
+$verifier->addDomainException('research.org', 'Research Institute');
+$verifier->addDomainException('college.ac.uk', 'British College');
+
+// You can add as many as you need
+$verifier->addDomainException('university.edu.gh', 'Ghana University');
+$verifier->addDomainException('institute.co.za', 'South African Institute');
+
+// Get all domain exceptions
+$exceptions = $verifier->getDomainExceptions();
+// Result will contain all added exceptions:
+// [
+//     'custom.edu' => ['name' => 'Custom University', 'domains' => ['custom.edu']],
+//     'research.org' => ['name' => 'Research Institute', 'domains' => ['research.org']],
+//     'college.ac.uk' => ['name' => 'British College', 'domains' => ['college.ac.uk']],
+//     'university.edu.gh' => ['name' => 'Ghana University', 'domains' => ['university.edu.gh']],
+//     'institute.co.za' => ['name' => 'South African Institute', 'domains' => ['institute.co.za']]
+// ]
+
+// Remove specific exceptions
+$verifier->removeDomainException('research.org');
+
+// Clear all exceptions if needed
+$verifier->clearDomainExceptions();
+```
+
 ### Available Methods
 
 #### verify(string $email): array
@@ -49,6 +85,18 @@ Verifies if an email belongs to an academic institution. Returns an array with:
 
 #### isValidEmail(string $email): bool
 Checks if the email format is valid.
+
+#### addDomainException(string $domain, string $institutionName): void
+Adds a custom domain to be considered as academic.
+
+#### removeDomainException(string $domain): void
+Removes a previously added domain exception.
+
+#### getDomainExceptions(): array
+Returns all currently added domain exceptions.
+
+#### clearDomainExceptions(): void
+Removes all domain exceptions.
 
 ### Example Results
 
